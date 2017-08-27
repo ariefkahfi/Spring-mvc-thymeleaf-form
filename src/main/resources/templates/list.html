@@ -1,0 +1,32 @@
+<html xmlns:th="http://www.thymeleaf.org">
+	<head>
+		<title>List Product </title>
+	</head>
+	<body>
+		
+		
+		<table border="2">
+			<tr>
+				<td>Product Name</td>
+				<td>Price Product</td>
+				<td>Stock Product</td>
+				<td colspan="2" align="center">Action</td>
+				<td colspan="2" align="center">Buy Product</td>
+			</tr>
+			
+			<tr th:each="p : ${data}">
+				<td th:text="${p.name}"></td>
+				<td th:text="${p.price}"></td>
+				<td th:if="${p.stock} >= 1 " th:text="${p.stock}"></td>
+				<td th:unless="${p.stock} >= 1" th:text="'STOK KOSONG'"></td>
+				<td><a th:href="@{'delete/' + ${p.id}}">Delete this product</a></td>
+				<td><a th:href="@{'form-update/' +${p.id}}">Update this product</a></td>
+				<td ><a th:if=" ${p.stock} >= 1 " th:href="@{'form-buy/' + ${p.id} }">Buy This Product</a></td>
+			</tr>
+			
+		</table>
+		
+		
+		
+	</body>
+</html>

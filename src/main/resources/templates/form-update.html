@@ -1,0 +1,32 @@
+<html xmlns:th="http://www.thymeleaf.org">
+	<head>
+		<title>Form Update Product</title>
+	</head>
+	<body>
+	
+	<form th:action="@{'/product/form-update?id='+${id}}" th:object="${product}" method="POST">
+	<table>
+		<tr>
+			<td>Product Name</td>
+			<td><input type="text" th:field="*{name}"/></td>
+			<td th:if="${#fields.hasErrors('name')}" th:errors="*{name}"></td>
+		</tr>
+		
+		<tr>
+			<td>Price Product</td>
+			<td><input type="number" th:field="*{price}"/></td>
+			<td th:if="${#fields.hasErrors('price')}" th:errors="*{price}"></td>
+		</tr>
+		
+		<tr>
+			<td>Stock Product</td>
+			<td  th:if="*{stock} >= 1"><input type="number" th:field="*{stock}"/></td>
+			<td th:unless="*{stock} >= 1"><input type="number"  th:field="*{stock}" th:value="0"/></td>
+			<td th:if="${#fields.hasErrors('stock')}" th:errors="*{stock}"></td>	
+		</tr>
+	
+	</table><br/>
+	<input type="submit" value="Update Product"/>
+	</form>
+	</body>
+</html>

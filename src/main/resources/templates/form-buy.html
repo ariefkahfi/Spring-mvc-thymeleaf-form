@@ -1,0 +1,33 @@
+<html xmlns:th="http://www.thymeleaf.org">
+	<head>
+		<title></title>
+	</head>
+	
+	<body>
+		
+		<form th:action="@{'/product/form-buy-submit/'+${id}}" th:object="${product}"  method="POST">
+			<table>
+			
+				<tr>
+					<td>Product Name</td>
+					<td th:text="${product.name}"></td>
+				</tr>
+				<tr>
+					<td>Stock Product</td>
+					<td th:text="${product.stock}"></td>
+				</tr>
+			
+				<tr>
+					<td><input type= "number" name="qty" placeholder="input a quantity here"/></td>
+					<td th:text="${pesan}"></td>
+				</tr>
+			
+			</table><br/>
+			<input type="submit" value = "Buy Product"/>	
+		</form>
+	
+	
+		
+	</body>
+	
+</html>
